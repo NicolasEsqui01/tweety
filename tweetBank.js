@@ -10,6 +10,9 @@ function list () { // listar los tweets
 function find (properties) { // encontrar tweets
     return _.cloneDeep(_.filter(data, properties));
 }
+
+module.exports = { add: add, list: list, find: find };
+
 const randArrayEl = function(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   };
@@ -26,4 +29,4 @@ for (let i = 0; i < 10; i++) {
     module.exports.add( getFakeName(), getFakeTweet() );
 }
 
-module.exports = { add: add, list: list, find: find };
+

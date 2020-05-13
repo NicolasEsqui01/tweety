@@ -2,31 +2,23 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
-const puerto = 3010;
+const puerto = 3000;
 
 // rutas del tweet
-const routes = require('./routes/index');
-
-
-
+const routes = require('./routes');
 
 
 
 // middleweres
 app.use(morgan('tiny'));
+app.use(express.static('public'))
 
 //nunjucks
 app.set('view engine', 'html'); // hace que res.render funcione con archivos html
 app.engine('html', nunjucks.render); // cuando le den archivos html a res.render, va a usar nunjucks
 nunjucks.configure('views', { noCache: true }); // apunta a nunjucks al directorio correcto para los templates
 
-const people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
-
-
-app.get('/vistas',function (req,res){
-    res.render('index',{title: 'Hall of Fame', people: people});
-});
-
+app.use('/',routes)
 
 
 app.listen(puerto,function (){
