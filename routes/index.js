@@ -9,6 +9,10 @@ router.get('/', function (req, res,next) {
   res.render( 'index', { tweets: tweets } );
 });
 
-
+router.get('/users/:name',function(req,res,next){
+  let name = req.params.name;
+  let listTweets = tweetBank.find({name:name});
+  res.render('index', {list:listTweets})
+});
 
 module.exports = router;
