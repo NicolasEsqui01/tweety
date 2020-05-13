@@ -2,7 +2,7 @@ const _ = require('lodash');
 const data = [];
 
 function add (name, content) { // agregar tweets
-    data.push({ name: name, content: content });
+    data.push({id:data.length ,name: name, content: content });
 }
 function list () { // listar los tweets
     return _.cloneDeep(data);

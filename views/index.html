@@ -12,18 +12,34 @@
       100 followers
     </div>
     <div class="col-md-9">
+
+        {% if showForm %}
+        <form action="/tweets" method="POST">
+          <label for="name_field">Name:</label>
+          <input name="name" type="text" id="name_field"/>
+          <label for="text_field">Text:</label>
+          <input name="text" type="text" id="text_field" style="width: 350px;" />
+          <input type="submit" value="Submit" />
+        </form>
+      {% endif %}
     
       <!-- display tweets here -->
       {% for tweet in tweets %}
         <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/test/5cbeea135cafe88451149213/sw1.jpg" alt="" class="imagen">
         <h4>{{tweet.name}}</h4>
         <li style="list-style: none;">{{tweet.content}}</li>
-      {% endfor %}
+      {% endfor %} 
       
     {% for tweet in list %}
     <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/test/5cbeea135cafe88451149213/sw1.jpg" alt="" class="imagen">
     <h4>{{tweet.name}}</h4>
   <li style="list-style: none;"><a href="/users/{{tweet.name}}"></a>{{tweet.content}}</li>
+    {% endfor %}
+
+    {% for tweet in tweets1 %}
+      <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/test/5cbeea135cafe88451149213/sw1.jpg" alt="" class="imagen">
+      <h4>{{tweet.name}}</h4>
+      <li style="list-style: none;">{{tweet.content}}</li>
     {% endfor %}
     </div>  
   </div>
